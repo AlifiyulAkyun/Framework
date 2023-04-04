@@ -1,0 +1,112 @@
+<!-- Nama : Alifiyul Akyun
+NIM : 2041720036 
+Kelas : TI-3B -->
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Uncover</title>
+    <style>
+        .mahasiswa {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+        }
+
+        .mahasiswa img {
+            margin-right: 10px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .mahasiswa h2,
+        .mahasiswa p {
+            margin: 0;
+        }
+
+        .header {
+            border: 1px solid black;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+
+    <script type="text/babel">
+        
+        const alifiyul = [
+            {
+                nama: "Nama : Alifiyul Akyun",
+                jurusan: " Jurusan : Teknologi Informasi",
+                alamat: "Alamat : Jl.Polowijen 2/320E Kota Malang",
+                namaOrtu: "Nama Orang Tua : Alimal Manazil",
+                nomerHp: "Nomer Hp: 081235266011",
+                pasFoto: "ayun1.jpeg"
+            }
+        ];
+
+        const Mahasiswa = () => {
+            return (
+                alifiyul.map(alifiyul =>
+                    <div className="mahasiswa" key={alifiyul.nama}>
+                        <img src={"image/" + alifiyul.pasFoto} alt={alifiyul.nama} />
+                        <div>
+                            <p>{alifiyul.nama}</p>
+                            <p>{alifiyul.jurusan}</p>
+                            <p>{alifiyul.alamat}</p>
+                            <p>{alifiyul.namaOrtu}</p>
+                            <p>{alifiyul.nomerHp}</p>
+                        </div>
+                    </div>
+                )
+            )
+        }
+
+        class Tombol extends React.Component {
+            handleButtonClick = () => {
+                alert(this.props.pesan);
+            }
+
+            render() {
+                return (
+                    <button onClick={() => this.handleButtonClick()} style={{ margin: "10px" }}>
+                        {this.props.children}
+                    </button>
+                )
+            }
+        }
+
+        const DaftarMahasiswa = () => {
+            return (
+                <React.Fragment>
+                    <div class="header"> 
+                    <center>
+                        <h2>UTS - Alifiyul Akyun</h2>
+                    </center>
+                    </div>
+                
+                    <section>
+                        <Mahasiswa />
+                    </section>
+                    <Tombol pesan="Nama : Alifiyul Akyun, Jurusan : Teknologi Informasi, Alamat : Jl.Polowijen 2/320E Kota Malang, Nama Orang Tua : Alimal Manazil, No.HP : 081235266011">Biodata</Tombol>
+                </React.Fragment>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<DaftarMahasiswa />); 
+    </script>
+</body>
+
+</html>
